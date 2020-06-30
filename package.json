@@ -1,0 +1,25 @@
+{
+  "name": "FEC-Reservation-Component-Proxy",
+  "version": "1.0.0",
+  "description": "Proxy For Reservation Component  - Will Park",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Danger/FEC-Reservation-Component-Proxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Danger/FEC-Reservation-Component-Proxy/issues"
+  },
+  "homepage": "https://github.com/Team-Danger/FEC-Reservation-Component-Proxy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
