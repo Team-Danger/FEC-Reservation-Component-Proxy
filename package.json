@@ -4,7 +4,8 @@
   "description": "Proxy For Reservation Component  - Will Park",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server/server.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/Team-Danger/FEC-Reservation-Component-Proxy#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  }
+    "http-proxy": "^1.18.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {}
 }

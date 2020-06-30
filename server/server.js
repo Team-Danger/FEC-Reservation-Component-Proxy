@@ -1,0 +1,36 @@
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan');
+const httpProxy = require("http-proxy");
+// const cors = require("cors");
+
+const app = express();
+const PORT = 8080;
+const public = path.resolve(__dirname, '..', 'client', 'dist');
+const proxy = httpProxy.createProxyServer({});
+
+const descriptionModule = 'http://localhost:3000';
+const reserveModule = 'http://localhost:3001';
+
+// app.use(cors());
+// app.use(express.static(public));
+app.use('/:moduleID', express.static(public));
+
+
+app.all('/:moduleID/main.js', (req, res) => {
+  proxy.web(req, res, { target: descriptionModule });
+});
+
+app.get('/:id/description', (req, res) => {
+  proxy.web(req, res, { target: descriptionModule });
+});
+
+app.all('/:moduleID/reservation-bundle.js', (req, res) => {
+  proxy.web(req, res, { target: reserveModule });
+});
+
+app.get('/api/:id/reservation', (req, res) => {
+  proxy.web(req, res, { target: reserveModule });
+});
+
+app.listen(PORT, () => console.log(`Proxy server running on port ${PORT}`));
