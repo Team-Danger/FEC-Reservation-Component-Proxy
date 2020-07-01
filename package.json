@@ -4,8 +4,7 @@
   "description": "Proxy For Reservation Component  - Will Park",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
-    "build": "webpack"
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",

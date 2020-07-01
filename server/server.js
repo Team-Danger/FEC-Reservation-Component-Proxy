@@ -11,6 +11,7 @@ const proxy = httpProxy.createProxyServer({});
 
 const descriptionModule = 'http://localhost:3000';
 const reserveModule = 'http://localhost:3001';
+const reviewsModule = 'http://localhost:3002';
 
 // app.use(cors());
 // app.use(express.static(public));
@@ -21,16 +22,28 @@ app.all('/:moduleID/main.js', (req, res) => {
   proxy.web(req, res, { target: descriptionModule });
 });
 
-app.get('/:id/description', (req, res) => {
+app.get('/api/description/:id', (req, res) => {
   proxy.web(req, res, { target: descriptionModule });
 });
+
+
 
 app.all('/:moduleID/reservation-bundle.js', (req, res) => {
   proxy.web(req, res, { target: reserveModule });
 });
 
-app.get('/api/:id/reservation', (req, res) => {
+app.get('/api/reservation/:id', (req, res) => {
   proxy.web(req, res, { target: reserveModule });
+});
+
+
+
+app.all('/:moduleID/bundle.js', (req, res) => {
+  proxy.web(req, res, { target: reviewsModule });
+});
+
+app.get('/api/reviews/:id', (req, res) => {
+  proxy.web(req, res, { target: reviewsModule });
 });
 
 app.listen(PORT, () => console.log(`Proxy server running on port ${PORT}`));
