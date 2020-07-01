@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const httpProxy = require("http-proxy");
-// const cors = require("cors");
+const cors = require("cors");
 
 const app = express();
 const PORT = 8080;
@@ -13,8 +13,7 @@ const descriptionModule = 'http://localhost:3000';
 const reserveModule = 'http://localhost:3001';
 const reviewsModule = 'http://localhost:3002';
 
-// app.use(cors());
-// app.use(express.static(public));
+app.all(cors());
 app.use('/:moduleID', express.static(public));
 
 
@@ -45,5 +44,7 @@ app.all('/:moduleID/bundle.js', (req, res) => {
 app.get('/api/reviews/:id', (req, res) => {
   proxy.web(req, res, { target: reviewsModule });
 });
+
+
 
 app.listen(PORT, () => console.log(`Proxy server running on port ${PORT}`));
