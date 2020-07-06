@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  proxy:
+    build: .
+    ports:
+      - '8080:8080'
+    depends_on:
+      - description
+      - reservation
+      - reviews
+  description:
+    image: ertdfgcb/feccomponent
+    depends_on:
+      - 'mongo'
+    ports:
+      - '3000'
+  reservation:
+    image: wpark95/fec
+    depends_on:
+      - 'mongo'
+    ports:
+      - '3001'
+  reviews:
+    image: jzhengcode/fec-reviews-component_web
+    depends_on:
+      - 'mongo'
+    ports:
+      - '3002'
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017"

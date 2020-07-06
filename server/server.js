@@ -9,9 +9,9 @@ const PORT = 8080;
 const public = path.resolve(__dirname, '..', 'client', 'dist');
 const proxy = httpProxy.createProxyServer({});
 
-const descriptionModule = 'http://localhost:3000';
-const reserveModule = 'http://localhost:3001';
-const reviewsModule = 'http://localhost:3002';
+const descriptionModule = 'http://description:3000';
+const reserveModule = 'http://reservation:3001';
+const reviewsModule = 'http://reviews:3002';
 
 app.all(cors());
 app.use('/:moduleID', express.static(public));
@@ -27,7 +27,7 @@ app.get('/api/description/:id', (req, res) => {
 
 
 
-app.all('/:moduleID/reservation-bundle.js', (req, res) => {
+app.all('/:moduleID/reservationBundle.js', (req, res) => {
   proxy.web(req, res, { target: reserveModule });
 });
 
